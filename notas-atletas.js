@@ -20,10 +20,17 @@ class NotasAtletas{
         this.atletas[i].media = soma /3;
         soma = 0;
         //atribue uma nova chave: media, para o objeto e zera a soma para o próximo atleta
-
       }
 
-      return this.atletas;
+    }
+
+    imprimirInfoAtletas(){
+
+      this.atletas.forEach(function (atleta){
+        console.log(`Nome: ${atleta.nome}\nNotas Obtidas: ${atleta.notas}\nMédia Válida: ${atleta.media}`);
+        
+      });
+
     }
 }
 
@@ -50,4 +57,6 @@ let atletas = [
 
 let notasAtletas = new NotasAtletas(atletas);
 
-console.log(notasAtletas.obterMedias());
+notasAtletas.obterMedias();
+
+notasAtletas.imprimirInfoAtletas();
