@@ -1,12 +1,30 @@
-console.log("teste");
-
 class NotasAtletas{
     constructor(atletas){
-        this.atletas = atletas;
+      this.atletas = atletas;
     }
 
-    
+    obterMedias(){
+      let notas = this.atletas.map(atleta => atleta.notas.sort((a,b) => a - b));
+      notas = notas.map(nota => nota.slice(1,4));
+      //ordenando as notas e retirando a menor e maior nota
 
+      let soma = 0;
+      //variável para utilizar na soma das notas
+
+      for(let i = 0; i < this.atletas.length; i++){
+        notas[i].forEach(function(nota) {
+           soma += nota;
+        });
+        //soma todas a notas do this.atletas[i]
+
+        this.atletas[i].media = soma /3;
+        soma = 0;
+        //atribue uma nova chave: media, para o objeto e zera a soma para o próximo atleta
+
+      }
+
+      return this.atletas;
+    }
 }
 
 
@@ -32,3 +50,4 @@ let atletas = [
 
 let notasAtletas = new NotasAtletas(atletas);
 
+console.log(notasAtletas.obterMedias());
